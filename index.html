@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/129bb909ce.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+        @import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
+
+        @media screen and (max-width: 430px) {
+            header #menu #pesquisa_compras{
+                width: 40%;
+            }
+            #Menu #conteudo2 #conteudo2_central{
+                grid-template-columns: repeat(1, 1fr);
+            }
+            #conteudo #titulo_conteudo1, #titulo_conteudo2, #titulo_conteudo3, #titulo_conteudo4, #titulo_conteudo5, #titulo_conteudo6{
+                font-size: 12px;
+            }
+        }
+        @media screen and (max-width: 530px) {
+            footer #navegacao_pagina ul{
+                grid-template-columns: repeat(4, 1fr);
+            }
+            footer #navegacao_pagina li{
+                margin-bottom: 10px;
+            }
+            body footer #rodape #navegacao_pagina li:nth-child(5){
+                margin-left: 0px;
+            }
+            
+        }
+        @media screen and (min-width: 910px) {
+            #navegacao{
+                width: 45%;
+            }
+        }
+        @media screen and (max-width: 910px) {
+            #navegacao{
+                width: 60%;
+            }
+            #pesquisa_compras > div:not(:first-child){
+                margin-left: 15px;
+            }
+        }
+        @media screen and (min-width: 670px) {
+            #botao_links_navegacao{
+                display: none;
+            }
+        }
+        @media screen and (max-width: 670px) {
+            #conteudo #conteudo_imagem{
+                width: 60%;
+            }
+            #botao_links_navegacao{
+                display: flex;
+                cursor: pointer;
+            }
+            #navegacao{
+                width: 0%;
+            }
+            #navegacao ul{
+                width: 0%;
+            }
+            #navegacao li{
+                width: 0%;
+                opacity: 0;
+            }
+            #menu #pesquisa_compras{
+                width: 20%;
+            }
+        } 
+        @media screen and (max-width: 710px) {
+            #conteudo #conteudo1_central{
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            #conteudo2 #conteudo2_central{
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            #conteudo5 #conteudo5_central{
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+        @media screen and (max-width: 810px){
+            #conteudo3 #conteudo3_central{
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+        @media screen and (max-width: 860px){
+            #conteudo4 #conteudo4_central{
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+        @media screen and (max-width: 960px){
+            #conteudo6 #conteudo6_central{
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+        @media screen and (max-width: 600px){
+            #navegacao_pagina ul li{
+                font-size: 13px;
+            }
+        }
+
+        *{
+            font-family: 'Roboto', sans-serif;
+            margin: 0%;
+            padding: 0%;
+            text-decoration: none;
+            list-style: none;
+        }
+        body{
+            scroll-behavior: smooth;
+        }
+        html{
+            scroll-padding-top: 9rem;
+            scroll-behavior: smooth;
+        }
+        html::-webkit-scrollbar{
+            width: 10px;
+        } 
+        html::-webkit-scrollbar-track{
+            background: black;
+        }
+        html::-webkit-scrollbar-thumb{
+            background: #ffffff;
+            border-radius: 5rem;
+        } 
+
+        header{
+            position: fixed;
+            width: 100%;
+            height: 110px;
+            background-color: black;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-end;
+            border-bottom: 2px solid rgb(90, 89, 89);
+        }
+        #menu{
+            width: 90%;
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #logo{
+            height: 75px;
+            cursor: pointer;
+        }
+        #logo img{
+            width: 72px;
+            height: 55px;
+        }
+        #navegacao ul{
+            display: flex;
+            justify-content: space-between;
+        }
+        #navegacao li{
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        #navegacao li:hover{
+            color: rgb(207, 153, 81);
+        }
+        #pesquisa_compras{
+            width: 7%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .fas:nth-child(1), .fas:nth-child(2){
+            color: white;
+            cursor: pointer;
+        }
+        #botao_links_navegacao span{
+            width: 20px;
+            height: 2px;
+            cursor: pointer;
+            background-color: white;
+            margin-top: 3px;
+        }
+        #botao_links_navegacao span::after{
+            content: ' ';
+            display: block;
+            width: 20px;
+            height: 2px;
+            background-color: white;
+            margin-top: 5px;
+            position: relative;
+            transition: .5s;
+        }
+        #botao_links_navegacao span::before{
+            content: ' ';
+            display: block;
+            width: 20px;
+            height: 2px;
+            background-color: white;
+            margin-top: 7px;
+            position: relative;
+            transition: .5s;
+        }
+        #botao_links_navegacao span.active{
+            height: 0px;
+        }
+        #botao_links_navegacao span.active::before{
+            transform: rotate(45deg);
+        }
+        #botao_links_navegacao span.active::after{
+            transform: rotate(135deg);
+            top: -7px;
+        }
+
+
+        #pesquisa{
+            position: absolute;
+            transform: translate(-143px, 40px );
+            height: 0px;
+            transition: .6s;
+        }
+        #pesquisa input{
+            width: 200px;
+            padding: 10px;
+            opacity: 0;
+            transition: .6s;
+        }
+        #pesquisa input:focus{
+            outline: none;
+        }
+        #pesquisa.active{
+            height: 200px;
+        }
+        #pesquisa.active input{
+            opacity: 1;
+        }
+
+
+
+        #carrinho{
+            width: 310px;
+            height: 500px;
+            position: fixed;
+            left: calc(100%);
+            top: 110px;
+            background-color: white;
+            transition: 1s;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;overflow-x: hidden;
+        }
+        #carrinho.active{
+            left: calc(100% - 310px);
+        }
+        .produto_carrinho{
+            width: 100%;
+            height: 60px;
+            display: flex;
+            margin: 5px;
+        }
+        .imagem_produto_carrinho{
+            width: 20%;
+            height: 60px;
+            margin-right: 15px;
+        }
+        .imagem_produto_carrinho img{
+            width: 100%;
+            height: 100%;
+        }
+        .nome_preco p:first-child{
+            font-size: 19px;
+        }
+        .nome_preco p:last-child{
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .botao_excluir{
+            margin-left: 145px;
+            display: flex;
+            align-items: center;
+        }
+        .botao_excluir button{
+            border: none;
+            background-color: transparent;
+        }
+        .botao_excluir button img{
+            width: 12px;
+            height: 12px;
+            cursor: pointer;
+        } 
+        #botao_confirmar{
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        #botao_confirmar button{
+            width: 75%;
+            height: 30px;
+            background-color: rgb(207, 153, 81);
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: .6s;
+        }
+        #botao_confirmar button:hover{
+            background-color: rgb(189, 137, 69);
+            width: 80%;
+        }
+
+        #links_botao_navegacao{
+            width: 210px;
+            height: 280px;
+            position: fixed;
+            left: calc(100%);
+            top: 110px;
+            background-color: white;
+            transition: 1s;
+            display: flex;
+            flex-direction: column;
+        }
+        #links_botao_navegacao.active{
+            left: calc(100% - 210px);
+        }
+        #links_botao_navegacao ul{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #links_botao_navegacao li{
+            margin-top: 20px;
+        }
+        #links_botao_navegacao li:hover{
+            color: rgb(207, 153, 81);
+            cursor: pointer;
+        }
+
+
+        #imagem_principal{
+            background: url("imagens/home-img.jpeg");
+            width: 100%;
+            height: 870px;
+        }
+        #conteudo_imagem{
+            width: 39%;
+            height: 870px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: 35px;
+        }
+        #titulo{
+            font-size: 17px;
+            color: white;
+            margin-bottom: 20px;
+        }
+        #texto{
+            font-size: 18px;
+            color: rgb(184, 184, 184);
+            margin-bottom: 20px;
+        }
+        #botao{
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+        }
+        #botao button{
+            width: 200px;
+            height: 40px;
+            background-color: rgb(207, 153, 81);
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: .6s;
+        }
+        #botao button:hover{
+            background-color: rgb(189, 137, 69);
+            width: 220px;
+        }
+
+
+
+
+        #about{
+            width: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #conteudo1{
+            width: 90%;
+            margin-bottom: 50px;
+        }
+        #titulo_conteudo1{
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(207, 153, 81);
+        }
+        #conteudo1_central{
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-top: 30px;
+        }
+        #conteudo1_imagem{
+            width: 100%;
+            height: 370px; 
+            background-color: white;
+        }
+        #conteudo1_imagem img{
+            width: 100%;
+            height: 370px;
+        }
+        #conteudo1_texto{
+            width: 100%;
+            background-color: rgb(48, 47, 47);
+        }
+        #conteudo1_texto h1{
+            margin: 30px 0px 15px 20px;
+            color: white;
+            font-size: 26px;
+        }
+        #conteudo1_texto p{
+            margin: 30px 5px 15px 20px;
+            color: rgb(214, 210, 210);
+            font-size: 16px;
+        }
+        #conteudo1_texto button{
+            margin: 20px 5px 44px 20px;
+            width: 30%;
+            height: 40px;
+            background-color: rgb(207, 153, 81);
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: .6s;
+        }
+        #conteudo1_texto button:hover{
+            background-color: rgb(189, 137, 69);
+            width: 35%;
+        }
+
+
+        #Menu{
+            width: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #conteudo2{
+            width: 90%;
+            margin-bottom: 50px;
+        }
+        #titulo_conteudo2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(207, 153, 81);
+            margin-bottom: 30px;
+        }
+        #conteudo2_central{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 55px;
+        }
+        .produto{
+            height: 325px;
+            border: 1px solid rgb(129, 126, 126);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .produto:hover{
+            background-color: white;
+        }
+        .produto:hover .nome_produto{
+            color: black;
+        }
+        .produto:hover .preco_produto > p{
+            color: black;
+        }
+        .produto:hover .adicionar_carrinho button{
+            color: black;
+        }
+        .local_produto{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .imagem_produto{
+            width: 80px;
+            height: 80px;
+            border-radius: 100px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            margin-bottom: 10px;
+        }
+        .imagem_produto img{
+            width: 100%;
+        }
+        .nome_produto{
+            text-align: center;
+            font-size: 13px;
+            color: white;
+            margin-bottom: 10px;
+        }
+        .preco_produto{
+            text-align: center;
+            font-size: 19px;
+            margin-bottom: 30px;
+        }
+        .preco_produto > p{
+            color: white;
+        }
+        .adicionar_carrinho button{
+            width: 100%;
+            height: 30px;
+            background-color: rgb(207, 153, 81);
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: .6s;
+        }
+        .adicionar_carrinho button:hover{
+            background-color: rgb(189, 137, 69);
+            width: 105%;
+        }
+
+
+        #Products{
+            width: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #conteudo3{
+            width: 90%;
+            margin-bottom: 50px;
+        }
+        #titulo_conteudo3{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(207, 153, 81);
+            margin-bottom: 30px;
+        }
+        #conteudo3_central{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 55px;
+        }
+        .produto_conteudo3{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgb(129, 126, 126);
+        }
+        .local_produto_conteudo3{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .botoes{
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .botoes img{
+            width: 20px;
+            height: 20px;
+        }
+        .botoes > div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 40px;
+            border: 1px solid rgb(129, 126, 126);
+            transition: .5s;
+        }
+        .botoes > div:hover{
+            background-color: rgb(207, 153, 81);
+        }
+        .botoes > div button{
+            border: none;
+            background-color: transparent;
+        }
+        .botoes > div:not(:first-child){
+            margin-left: 10px;
+        }
+        .produto_conteudo3_imagem{
+            width: 100%;
+            height: 233px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .produto_conteudo3_nome{
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+        .produto_conteudo3_classificacao{
+            width: 100%;
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .produto_conteudo3_preco{
+            color: white;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+
+        #Review{
+            width: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #conteudo4{
+            width: 90%;
+            margin-bottom: 50px;
+        }
+        #titulo_conteudo4{
+            color: rgb(207, 153, 81);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        #conteudo4_central{
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 55px;
+        }
+        .customer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgb(129, 126, 126);
+        }
+        .local_customer{
+            width: 90%;
+        }
+        .conteudo4_imagem{
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0px 20px 0px;
+        }
+        .conteudo4_imagem img{
+            width: 60px;
+            height: 60px;
+        }
+        .conteudo4_texto{
+            color: rgb(207, 204, 204);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .imagem_customer{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .local_imagem_customer{
+            width: 75px;
+            height: 75px;
+            border-radius: 100px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .local_imagem_customer img{
+            width: 100%;
+            border-radius: 100px;
+        }
+        .nome_customer{
+            text-align: center;
+            color: white;
+            margin: 20px 0px 20px 0px;
+        }
+        .avaliacao_customer{
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+
+        #Contact{
+            width: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #conteudo5{
+            width: 90%;
+            margin-bottom: 50px;
+        }
+        #titulo_conteudo5{
+            color: rgb(207, 153, 81);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        #conteudo5_central{
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        #mapa_localidade{
+            width: 100%;
+            height: 353px;
+            background-color: white;
+        }
+        #entrar_em_contato{
+            width: 100%;
+            background-color: rgb(48, 47, 47);
+        }
+        #entrar_em_contato img{
+            width: 20px;
+            height: 20px;
+        }
+        #titulo_contato{
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            margin: 30px 0px 30px 0px;
+        }
+        #mapa_localidade iframe{
+            width: 100%;
+            height: 100%;
+        }
+        #input_name, #input_email, #input_numero{
+            width: 80%;
+            display: flex;
+            margin: auto;
+            border: 1px solid rgb(129, 126, 126);
+            height: 45px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        #input_name img, #input_email img, #input_numero img{
+            margin: 0px 10px 0px 10px;
+        }
+        #input_name input, #input_email input, #input_numero input{
+            width: 85%;
+            background-color: transparent;
+            border: none;
+            padding: 5px;
+            color: white;
+        }
+        #input_name input:focus, #input_email input:focus, #input_numero input:focus{
+            outline: none;
+        }
+        #botao_contatar{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        #botao_contatar button{
+            width: 30%;
+            height: 30px;
+            background-color: rgb(207, 153, 81);
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: .6s;
+        }
+        #botao_contatar button:hover{
+            background-color: rgb(189, 137, 69);
+            width: 35%;
+        }
+
+
+        #Blog{
+            width: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #conteudo6{
+            width: 90%;
+            margin-bottom: 50px;
+        }
+        #titulo_conteudo6{
+            color: rgb(207, 153, 81);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        #conteudo6_central{
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 55px;
+        }
+        .post{
+            border: 1px solid rgb(129, 126, 126);
+        }
+        .local_post{
+            width: 100%;
+            overflow: hidden;
+        }
+        .imagem_post{
+            width: 100%;
+        }
+        .imagem_post:hover{
+            transform: scale(1.2);
+        } 
+        .imagem_post img{
+            width: 100%;
+        }
+        .titulo_post{
+            margin: 15px 0px 10px 15px;
+            color: white;
+            font-size: 9px;
+        }
+        .data_criador{
+            margin: 0px 0px 10px 15px;
+            color: rgb(207, 153, 81);
+            font-size: 14px;
+        }
+        .resumo{
+            margin: 0px 0px 15px 15px;
+            color: rgb(202, 198, 198);
+        }
+        .ler_post{
+            display: flex;
+            align-items: center;
+            margin: 0px 0px 15px 15px;
+        }
+        .ler_post button{
+            width: 40%;
+            height: 30px;
+            background-color: rgb(207, 153, 81);
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: .6s;
+        }
+        .ler_post button:hover{
+            background-color: rgb(189, 137, 69);
+            width: 45%;
+        }
+
+
+
+        #rodape{
+            width: 100%;
+            background-color: rgb(48, 47, 47);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #redes_sociais{
+            display: flex;
+            justify-content: center;
+            min-width: 31%;
+            margin: 50px;
+        }
+        #redes_sociais div{
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+            align-items: center;
+        }
+        #redes_sociais div:not(:first-child){
+            margin-left: 15px;
+        }
+        #redes_sociais img{
+            width: 20px;
+            height: 20px;
+        }
+        #redes_sociais > div{
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+            background-color: rgb(207, 153, 81);
+        }
+        #navegacao_pagina{
+            width: 65%;
+            margin-bottom: 50px;
+        }
+        #navegacao_pagina ul{
+            display: flex;
+           /* grid-template-columns: repeat(7, 1fr); */
+            justify-content: space-evenly;
+            flex-wrap: wrap; 
+        }
+        #navegacao_pagina li{
+            width: 75px;
+            text-align: center;
+            border: 1px solid rgb(129, 126, 126);
+            padding: 5px;
+            color: white;
+            transition: .6s;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        #navegacao_pagina li:hover{
+            background-color: rgb(207, 153, 81);
+        }
+        #creditos{
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="menu">
+            <div id="logo">
+                <img src="imagens/logo.png" alt="1">
+            </div>
+            <div id="navegacao">
+                <ul>
+                    <li onclick="scrollbaixo1()">Home</li>
+                    <li onclick="scrollbaixo2()">About</li>
+                    <li onclick="scrollbaixo3()">Menu</li>
+                    <li onclick="scrollbaixo4()">Products</li>
+                    <li onclick="scrollbaixo5()">Review</li>
+                    <li onclick="scrollbaixo6()">Contact</li>
+                    <li onclick="scrollbaixo7()">Blog</li>
+                </ul>
+            </div>
+            <div id="pesquisa_compras">
+                <div id="botao_pesquisa">
+                   <!-- <img src="imagens/pesquisa.jpg" alt="1" onclick="mostrar_pesquisa()">-->
+                    <i class="fas fa-search" onclick="mostrar_pesquisa()"></i>
+                    <div id="pesquisa">
+                        <input type="text">
+                    </div>
+                </div>
+                <div id="carrinho_compras">
+                   <!-- <img src="imagens/compras.png" alt="1" onclick="mostrar_carrinho()">-->
+                   <i class="fas fa-shopping-cart" onclick="mostrar_carrinho()"></i>
+                </div> 
+                <div id="botao_links_navegacao" onclick="mostrar_menu_navegacao()" >
+                   <!-- <img src="" alt="1" onclick="mostrar_menu_navegacao()">  -->
+                   <!-- <i class="fas fa-bars" onclick="mostrar_menu_navegacao()"></i>-->
+                   <span id="icone_menu"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="carrinho">
+        <div id="botao_confirmar">
+            <button>Checkout Now</button>
+        </div> 
+    </div>
+    <div id="links_botao_navegacao">
+        <ul>
+            <li onclick="scrollbaixo1()">Home</li>
+            <li onclick="scrollbaixo2()">About</li>
+            <li onclick="scrollbaixo3()">Menu</li>
+            <li onclick="scrollbaixo4()">Products</li>
+            <li onclick="scrollbaixo5()">Review</li>
+            <li onclick="scrollbaixo6()">Contact</li>
+            <li onclick="scrollbaixo7()">Blog</li>
+        </ul>
+    </div>
+    <main>
+        <div id="conteudo">
+            <div id="imagem_principal">
+                <div id="conteudo_imagem">
+                    <div id="titulo">
+                        <h1>FRESH COFFEE IN THE MORGING</h1>
+                    </div>
+                    <div id="texto">
+                        <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum.</p>
+                    </div>
+                    <div id="botao">
+                        <button>Get It Now</button>
+                    </div>
+                </div>
+            </div>
+            <div id="about">
+                <div id="conteudo1">
+                    <div id="titulo_conteudo1">
+                        <h1>ABOUT US</h1>
+                    </div>
+                    <div id="conteudo1_central">
+                        <div id="conteudo1_imagem">
+                            <img src="imagens/about-img.jpeg" alt="1" id="imagem_about">
+                        </div>
+                        <div id="conteudo1_texto">
+                            <h1>What Makes Your Coffee Special?</h1>
+                            <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </p>
+                            <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem </p>
+                            <button>Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Menu">
+                <div id="conteudo2">
+                    <div id="titulo_conteudo2">
+                        <h1>OUR MENU</h1>
+                    </div>
+                    <div id="conteudo2_central">
+                        <div id="produto1" class="produto">
+                            <div class="local_produto">
+                                <div class="imagem_produto">
+                                    <img src="imagens/menu-2.png" alt="1">
+                                </div>
+                                <div class="nome_produto">
+                                    <h2>nome</h2>
+                                </div>
+                                <div class="preco_produto">
+                                    <p>R$20,00</p>
+                                </div>
+                                <div class="adicionar_carrinho">
+                                    <button>Add To Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="produto2" class="produto">
+                            <div class="local_produto">
+                                <div class="imagem_produto">
+                                    <img src="imagens/menu-3.png" alt="1">
+                                </div>
+                                <div class="nome_produto">
+                                    <h2>nome</h2>
+                                </div>
+                                <div class="preco_produto">
+                                    <p>preco</p>
+                                </div>
+                                <div class="adicionar_carrinho">
+                                    <button onclick="add_to_cart()">Add To Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="produto3" class="produto">
+                            <div class="local_produto">
+                                <div class="imagem_produto">
+                                    <img src="imagens/menu-4.png" alt="1">
+                                </div>
+                                <div class="nome_produto">
+                                    <h2>nome</h2>
+                                </div>
+                                <div class="preco_produto">
+                                    <p>preco</p>
+                                </div>
+                                <div class="adicionar_carrinho">
+                                    <button onclick="add_to_cart()">Add To Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="produto4" class="produto">
+                            <div class="local_produto">
+                                <div class="imagem_produto">
+                                    <img src="imagens/menu-5.png" alt="1">
+                                </div>
+                                <div class="nome_produto">
+                                    <h2>nome</h2>
+                                </div>
+                                <div class="preco_produto">
+                                    <p>preco</p>
+                                </div>
+                                <div class="adicionar_carrinho">
+                                    <button onclick="add_to_cart()">Add To Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="produto5" class="produto">
+                            <div class="local_produto">
+                                <div class="imagem_produto">
+                                    <img src="imagens/menu-6.png" alt="1">
+                                </div>
+                                <div class="nome_produto">
+                                    <h2>nome</h2>
+                                </div>
+                                <div class="preco_produto">
+                                    <p>preco</p>
+                                </div>
+                                <div class="adicionar_carrinho">
+                                    <button onclick="add_to_cart()">Add To Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="produto6" class="produto">
+                            <div class="local_produto">
+                                <div class="imagem_produto">
+                                    <img src="imagens/menu-1.png" alt="1">
+                                </div>
+                                <div class="nome_produto">
+                                    <h2>nome</h2>
+                                </div>
+                                <div class="preco_produto">
+                                    <p>R$20,00</p>
+                                </div>
+                                <div class="adicionar_carrinho">
+                                    <button onclick="add_to_cart()">Add To Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Products">
+                <div id="conteudo3">
+                    <div id="titulo_conteudo3">
+                        <h1>LATEST PRODUCTS</h1>
+                    </div>
+                    <div id="conteudo3_central">
+                        <div id="produto_conteudo3_1" class="produto_conteudo3">
+                            <div class="local_produto_conteudo3">
+                                <div class="botoes">
+                                    <div class="botao_carrinho" onclick="add_to_cart()">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </div>
+                                    <div class="botao_gostar">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="botao_visualizar">
+                                      <i class="fas fa-eye"></i>
+                                    </div>
+                                </div>
+                                <div class="produto_conteudo3_imagem">
+                                    <img src="imagens/product-3.png" alt="1">
+                                </div>
+                                <div class="produto_conteudo3_nome">
+                                    <h2>nome</h2>
+                                </div>
+                                <div class="produto_conteudo3_classificacao">
+                                    <p>qtd. estrelas</p>
+                                </div>
+                                <div class="produto_conteudo3_preco">
+                                    <p>R$20,00</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="produto_conteudo3_2" class="produto_conteudo3">
+                            <div class="local_produto_conteudo3">
+                                <div class="botoes">
+                                    <div class="botao_carrinho" onclick="add_to_cart()">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </div>
+                                    <div class="botao_gostar">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="botao_visualizar">
+                                      <i class="fas fa-eye"></i>
+                                    </div>
+                                </div>
+                                <div class="produto_conteudo3_imagem">
+                                    <img src="imagens/product-2.png" alt="1">
+                                </div>
+                                <div class="produto_conteudo3_nome">
+                                    <h2>nome</h2>
+                                </div>
+                                <div class="produto_conteudo3_classificacao">
+                                    <p>qtd. estrelas</p>
+                                </div>
+                                <div class="produto_conteudo3_preco">
+                                    <p>R$20,00</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="produto_conteudo3_3" class="produto_conteudo3">
+                            <div class="local_produto_conteudo3">
+                                <div class="botoes">
+                                    <div class="botao_carrinho" onclick="add_to_cart()">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </div>
+                                    <div class="botao_gostar">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="botao_visualizar">
+                                      <i class="fas fa-eye"></i>
+                                    </div>
+                                </div>
+                                <div class="produto_conteudo3_imagem">
+                                    <img src="imagens/product-1.png" alt="1">
+                                </div>
+                                <div class="produto_conteudo3_nome">
+                                    <h2>nome</h2>
+                                </div>
+                                <div class="produto_conteudo3_classificacao">
+                                    <p>qtd. estrelas</p>
+                                </div>
+                                <div class="produto_conteudo3_preco">
+                                    <p>R$20,00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Review">
+                <div id="conteudo4">
+                    <div id="titulo_conteudo4">
+                        <h1>CUSTOMER'S REVIEW</h1>
+                    </div>
+                    <div id="conteudo4_central">
+                        <div id="customer1" class="customer">
+                            <div class="local_customer">
+                                <div class="conteudo4_imagem">
+                                    <img src="imagens/quote-img.png" alt="1">
+                                </div>
+                                <div class="conteudo4_texto">
+                                    <p>lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumvlorem ipsumlorem ipsumlorem ipsumvlorem ipsumlorem ipsumlorem ipsumlorem ipsum</p>
+                                </div>
+                                <div class="imagem_customer">
+                                    <div class="local_imagem_customer">
+                                        <img src="imagens/pic-3.png" alt="1">
+                                    </div>
+                                </div>
+                                <div class="nome_customer">
+                                    <p>nome</p>
+                                </div>
+                                <div class="avaliacao_customer">
+                                    <p>qtd. estrelas</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="customer2" class="customer">
+                            <div class="local_customer">
+                                <div class="conteudo4_imagem">
+                                    <img src="imagens/quote-img.png" alt="1">
+                                </div>
+                                <div class="conteudo4_texto">
+                                    <p>lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumvlorem ipsumlorem ipsumlorem ipsumvlorem ipsumlorem ipsumlorem ipsumlorem ipsum</p>
+                                </div>
+                                <div class="imagem_customer">
+                                    <div class="local_imagem_customer">
+                                        <img src="imagens/pic-2.png" alt="1">
+                                    </div>
+                                </div>
+                                <div class="nome_customer">
+                                    <p>nome</p>
+                                </div>
+                                <div class="avaliacao_customer">
+                                    <p>qtd. estrelas</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="customer3" class="customer">
+                            <div class="local_customer">
+                                <div class="conteudo4_imagem">
+                                    <img src="imagens/quote-img.png" alt="1">
+                                </div>
+                                <div class="conteudo4_texto">
+                                    <p>lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumvlorem ipsumlorem ipsumlorem ipsumvlorem ipsumlorem ipsumlorem ipsumlorem ipsum</p>
+                                </div>
+                                <div class="imagem_customer">
+                                    <div class="local_imagem_customer">
+                                        <img src="imagens/pic-1.png" alt="1">
+                                    </div>
+                                </div>
+                                <div class="nome_customer">
+                                    <p>nome</p>
+                                </div>
+                                <div class="avaliacao_customer">
+                                    <p>qtd. estrelas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Contact">
+                <div id="conteudo5">
+                    <div id="titulo_conteudo5">
+                        <h1>CONTACT US</h1>
+                    </div>
+                    <div id="conteudo5_central">
+                        <div id="mapa_localidade">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30153.788252261566!2d72.82321484621745!3d19.141690214227783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b63aceef0c69%3A0x2aa80cf2287dfa3b!2sJogeshwari%20West%2C%20Mumbai%2C%20Maharashtra%20400047!5e0!3m2!1sen!2sin!4v1629452077891!5m2!1sen!2sin" frameborder="0"></iframe>
+                        </div>
+                        <div id="entrar_em_contato">
+                            <div id="titulo_contato">
+                                <h1>Get In Touch</h1>
+                            </div>
+                            <div id="input_name">
+                                <img src="imagens/contatar_nome.png" alt="1">
+                                <input type="text" placeholder="Name">
+                            </div>
+                            <div id="input_email">
+                                <img src="imagens/contatar_email.png" alt="1">
+                                <input type="text" placeholder="Email">
+                            </div>
+                            <div id="input_numero">
+                                <img src="imagens/contatar_telefone.png" alt="1">
+                                <input type="text" placeholder="Number">
+                            </div>
+                            <div id="botao_contatar">
+                                <button>Contact Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Blog">
+                <div id="conteudo6">
+                    <div id="titulo_conteudo6">
+                        <h1>OUR BLOGS</h1>
+                    </div>
+                    <div id="conteudo6_central">
+                        <div id="post1" class="post">
+                            <div class="local_post">
+                                <div class="imagem_post">
+                                    <img src="imagens/blog-3.jpeg" alt="1">
+                                </div>
+                                <div class="titulo_post">
+                                    <h1>Tasty And Refreshing Coffee</h1>
+                                </div>
+                                <div class="data_criador">
+                                    <p>By Admin / 1st May, 2021</p>
+                                </div>
+                                <div class="resumo">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam explicabo</p>
+                                </div>
+                                <div class="ler_post">
+                                    <button>Read More</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="post2" class="post">
+                            <div class="local_post">
+                                <div class="imagem_post">
+                                    <img src="imagens/blog-2.jpeg" alt="1">
+                                </div>
+                                <div class="titulo_post">
+                                    <h1>Tasty And Refreshing Coffee</h1>
+                                </div>
+                                <div class="data_criador">
+                                    <p>By Admin / 1st May, 2021</p>
+                                </div>
+                                <div class="resumo">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam explicabo</p>
+                                </div>
+                                <div class="ler_post">
+                                    <button>Read More</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="post3" class="post">
+                            <div class="local_post">
+                                <div class="imagem_post">
+                                    <img src="imagens/blog-1.jpeg" alt="1">
+                                </div>
+                                <div class="titulo_post">
+                                    <h1>Tasty And Refreshing Coffee</h1>
+                                </div>
+                                <div class="data_criador">
+                                    <p>By Admin / 1st May, 2021</p>
+                                </div>
+                                <div class="resumo">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam explicabo</p>
+                                </div>
+                                <div class="ler_post">
+                                    <button>Read More</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div id="rodape">
+            <div id="redes_sociais">
+                <div id="rede1">
+                    <img src="imagens/facebook.png" alt="1">
+                </div>
+                <div id="rede2">
+                    <img src="imagens/twitter.png" alt="1">
+                </div>
+                <div id="rede3">
+                    <img src="imagens/instagram.png" alt="1">
+                </div>
+                <div id="rede4">
+                    <img src="imagens/linkedin.png" alt="1">
+                </div>
+                <div id="rede5">
+                    <img src="imagens/pinterest.png" alt="1">
+                </div>
+            </div>
+            <div id="navegacao_pagina">
+                <ul>
+                    <li onclick="scrollbaixo1()">Home</li>
+                    <li onclick="scrollbaixo2()">About</li>
+                    <li onclick="scrollbaixo3()">Menu</li>
+                    <li onclick="scrollbaixo4()">Products</li>
+                    <li onclick="scrollbaixo5()">Review</li>
+                    <li onclick="scrollbaixo6()">Contact</li>
+                    <li onclick="scrollbaixo7()">Blog</li>
+                </ul>
+            </div>
+            <div id="creditos">
+                <p>Create By FabrícioLR | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const imagem_about = document.getElementById("imagem_about")
+        imagem_about.style.height = `${document.getElementById("conteudo1_texto").offsetHeight}px`
+
+        function scrollbaixo1(){
+            window.scrollTo(0, 0)
+        }
+        function scrollbaixo2(){
+            window.scrollTo(0, 758)
+        }
+        function scrollbaixo3(){
+            const valor_height = document.getElementById("about").offsetHeight
+            window.scrollTo(0, Number(730) + valor_height,) 
+        }
+        function scrollbaixo4(){
+            const valor_height1 = document.getElementById("about").offsetHeight
+            const valor_height2 = document.getElementById("Menu").offsetHeight
+            window.scrollTo(0, Number(740) + valor_height1 + valor_height2)
+        }
+        function scrollbaixo5(){
+            const valor_height1 = document.getElementById("about").offsetHeight
+            const valor_height2 = document.getElementById("Menu").offsetHeight
+            const valor_height3 = document.getElementById("Products").offsetHeight
+            window.scrollTo(0, Number(730) + valor_height1 + valor_height2 + valor_height3)
+        }
+        function scrollbaixo6(){
+            const valor_height1 = document.getElementById("about").offsetHeight
+            const valor_height2 = document.getElementById("Menu").offsetHeight
+            const valor_height3 = document.getElementById("Products").offsetHeight
+            const valor_height4 = document.getElementById("Review").offsetHeight
+            window.scrollTo(0, Number(730) + valor_height1 + valor_height2 + valor_height3 + valor_height4)
+        }
+        function scrollbaixo7(){
+            const valor_height1 = document.getElementById("about").offsetHeight
+            const valor_height2 = document.getElementById("Menu").offsetHeight
+            const valor_height3 = document.getElementById("Products").offsetHeight
+            const valor_height4 = document.getElementById("Review").offsetHeight
+            const valor_height5 = document.getElementById("Contact").offsetHeight
+            window.scrollTo(0, Number(730) + valor_height1 + valor_height2 + valor_height3 + valor_height4 + valor_height5)
+        }
+
+        function mostrar_pesquisa(){
+            const barra_pesquisa = document.getElementById("pesquisa")
+            const carrinho = document.getElementById("carrinho")
+            const menu_navegacao = document.getElementById("links_botao_navegacao")
+            const icone_menu = document.getElementById("icone_menu")
+
+            barra_pesquisa.classList.toggle("active")
+            carrinho.classList.remove("active")
+            menu_navegacao.classList.remove("active")
+            icone_menu.classList.remove("active")
+        }
+        function mostrar_carrinho(){
+            const barra_pesquisa = document.getElementById("pesquisa")
+            const carrinho = document.getElementById("carrinho")
+            const menu_navegacao = document.getElementById("links_botao_navegacao")
+            const icone_menu = document.getElementById("icone_menu")
+
+            barra_pesquisa.classList.remove("active")
+            carrinho.classList.toggle("active")
+            menu_navegacao.classList.remove("active")
+            icone_menu.classList.remove("active")
+        }
+        function mostrar_menu_navegacao(){
+            const barra_pesquisa = document.getElementById("pesquisa")
+            const carrinho = document.getElementById("carrinho")
+            const menu_navegacao = document.getElementById("links_botao_navegacao")
+            const icone_menu = document.getElementById("icone_menu")
+
+            barra_pesquisa.classList.remove("active")
+            carrinho.classList.remove("active")
+            menu_navegacao.classList.toggle("active")
+            icone_menu.classList.toggle("active")
+        }
+
+        const add_to_cart = document.querySelectorAll(".adicionar_carrinho button")
+        for (let botao in add_to_cart){
+            add_to_cart[botao].onclick = (event) => {
+                adicionar_produto_carrinho(event)
+            }
+        }
+        function adicionar_produto_carrinho(local){
+            document.getElementById("botao_confirmar").parentNode.removeChild(document.getElementById("botao_confirmar"))
+
+            var local_info = local.path[2]
+            
+            const div_geral = document.getElementById("carrinho")
+
+            const div_local = document.createElement("div")
+            div_local.className = "produto_carrinho"
+
+            const div_img = document.createElement("div")
+            div_img.className = "imagem_produto_carrinho"
+            const img_div = document.createElement("img")
+            img_div.src = local_info.getElementsByTagName("img")[0].src
+            div_img.appendChild(img_div)
+
+            const div_info = document.createElement("div")
+            div_info.className = "nome_preco"
+            const nome = document.createElement("p")
+            nome.innerHTML = local_info.getElementsByTagName("h2")[0].innerHTML
+            const preco = document.createElement("p")
+            preco.innerHTML = local_info.getElementsByTagName("p")[0].innerHTML
+            div_info.appendChild(nome)
+            div_info.appendChild(preco)
+
+            const div_botao = document.createElement("div")
+            div_botao.className = "botao_excluir"
+            const botao = document.createElement("button")
+            const img_botao = document.createElement("img")
+            img_botao.src = "imagens/excluir.png"
+            img_botao.onclick = (event) => {
+                excluir_produto_carrinho(event)
+            }
+            botao.appendChild(img_botao)
+            div_botao.appendChild(botao)
+
+            const div_botao_confirmar = document.createElement("div")
+            div_botao_confirmar.id = "botao_confirmar"
+            const botao_confirmar = document.createElement("button")
+            botao_confirmar.innerHTML = "Checkout Now"
+            div_botao_confirmar.appendChild(botao_confirmar)
+
+            div_local.appendChild(div_img)
+            div_local.appendChild(div_info)
+            div_local.appendChild(div_botao)
+
+            div_geral.appendChild(div_local)
+            div_geral.appendChild(div_botao_confirmar)
+        }
+        function excluir_produto_carrinho(local){
+            var local_produto = local.path[3]
+            local_produto.parentNode.removeChild(local_produto)
+        } 
+    </script>
+</body>
+</html>
